@@ -1,26 +1,53 @@
-import React from 'react';
+import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import './bootstrap.css';
+import FisrtComp from './components/FistComp'
+import SecondComp from './components/SecondComp'
+//import Counter from './components/counter/Counter'
+import TodoApp from './components/todo/TodoApp'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+       {/* <Counter /> */}
+       <TodoApp/>
+       </div>
+    );
+  }
+}
+class Learnexpample extends Component {
+  render() {
+    return (
+      <div className="App">
+        <FisrtComp />
+        <SecondComp />
+      </div>
+    );
+  }
 }
 
+
+class Logout extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {  }
+  }
+  render() { 
+    return ( 
+      <>
+      <h1>You are out</h1>
+    <div className="container">
+      Thanks for using!
+    </div>
+    </>);
+  }
+}
+ 
+
+
+
 export default App;
+
+
