@@ -29,21 +29,7 @@ class Learnexpample extends Component {
 }
 
 
-class Logout extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {  }
-  }
-  render() { 
-    return ( 
-      <>
-      <h1>You are out</h1>
-    <div className="container">
-      Thanks for using!
-    </div>
-    </>);
-  }
-}
+
  
 
 

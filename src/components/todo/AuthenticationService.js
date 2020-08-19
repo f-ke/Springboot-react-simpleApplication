@@ -7,10 +7,16 @@ class AuthentiactionService{
     logOut(){
         sessionStorage.removeItem('ValidUser')
     }
+    
     isUserLogin(){
         let user = sessionStorage.getItem('ValidUser')
         if(user === null)return false;
         return true;
+    }
+    getUserLogin(){
+        let user = sessionStorage.getItem('ValidUser')
+        if(user === null)return "";
+        return user;
     }
 }
 export default new AuthentiactionService();
