@@ -19,7 +19,15 @@ RetriveWelcomeMessage=()=>{
     
 }
 HandleError=(error)=>{
-    console.log(error.data.message)
+    console.log(error.response);
+    let errorMsg = '';
+    if(error.message){
+        errorMsg += error.message
+    }
+    if(error.response&&error.response.data.message){
+        errorMsg += error.response.data.message
+    }
+    this.setState({WelcomeMsg:errorMsg})
 }
     render() { 
     return ( <>

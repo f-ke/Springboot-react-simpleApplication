@@ -6,8 +6,12 @@ class HelloService  {
         return axios.get("http://localhost:8080/hello")
     }
     getWelcomeName(name){
+      
+
         console.log(name);
-        return axios.get(`http://localhost:8080/hello/${name}`)
+        return axios.get(`http://localhost:8080/hello/${name}`
+        
+        )
     }
 }
  

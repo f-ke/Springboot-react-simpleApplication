@@ -5,32 +5,45 @@ class LoginComponent extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            userName: "keke",
-            passWord:"123456",
+            userName: '',
+            passWord:'password',
             LoginSucess:false,
             LogtinFailed:false 
           }
     }
     checkLogin=()=>{
-        if(this.state.userName==='keke' && this.state.passWord=="123456"){
-            AuthentiactionService.registerLoginSucess(this.state.userName, this.state.passWord)
-            this.props.history.push(`/welcome/${this.state.userName}`)
-            this.setState(
-                {
-                    LoginSucess:true,
-                    LogtinFailed:false
-                }
-                )
-        }else{
-            this.setState(
-                {
-                    LoginSucess:false,
-                    LogtinFailed:true
-                }
-                )
+        // if(this.state.userName==='username' && this.state.passWord==='password'){
+        //     AuthentiactionService.registerLoginSucess(this.state.userName, this.state.passWord)
+        //     this.props.history.push(`/welcome/${this.state.userName}`)
+        //     this.setState(
+        //         {
+        //             LoginSucess:true,
+        //             LogtinFailed:false
+        //         }
+        //         )
+        // }else{
+        //     this.setState(
+        //         {
+        //             LoginSucess:false,
+        //             LogtinFailed:true
+        //         }
+        //         )
 
-        }
-
+        // }
+         AuthentiactionService.executeBasicAuth(this.state.userName,this.state.passWord)
+         .then(
+          ()=> { AuthentiactionService.registerLoginSucess(this.state.userName, this.state.passWord)
+            this.props.history.push(`/welcome/${this.state.userName}`)}
+         ).catch(
+             ()=>{
+                this.setState(
+                    {
+                        LoginSucess:false,
+                        LogtinFailed:true
+                    }
+                )
+             }
+         )
     }
     render() { 
         return ( <>
@@ -39,8 +52,8 @@ class LoginComponent extends Component {
             {this.state.LoginSucess&&<div>sucess</div>}
             {this.state.LogtinFailed&&<div className="alert alert-warning">Failed</div>}
             UserName:<input type="text" name = "userName" value = {this.state.userName} onChange={this.handleChange}/>
-            PassWord:<input type="password" name = "PassWord" value = {this.state.passWord} onChange = {this.handleChange}/>
-            <button onClick={this.checkLogin} className="btn btn-primary">Login</button>
+            PassWord:<input type="password" name = "passWord" value = {this.state.passWord} onChange = {this.handleChange}/>
+            <button onClick={this.checkLogin} className="btn btn-primary" style={{marginLeft:20}}>Login</button>
             
         </div> 
         </>);

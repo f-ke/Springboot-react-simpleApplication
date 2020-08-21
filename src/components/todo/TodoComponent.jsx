@@ -16,16 +16,16 @@ class TodoComponent  extends Component {
     }
     onSubmit=(value)=>{
        // console.log(value);
-       let username = AuthenticationService.getUserLogin
+       let username = AuthenticationService.getUserLogin()
        TodoService.updateTodo(username, this.state.id, {
            id:this.state.id,
            action:value.descrption,
            targetDate:value.targetDate
 
-       }).then(()=>this.props.history.push('/todo'))
+       }).then(()=>this.props.history.push('/todo')).catch(error=>console.log(console.log(error)))
     }
     componentDidMount(){
-        let username = AuthenticationService.getUserLogin
+        let username = AuthenticationService.getUserLogin();
         TodoService.retriveTodo(username, this.state.id)
         .then(response =>{
             this.setState({

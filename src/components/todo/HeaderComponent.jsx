@@ -14,7 +14,7 @@ class HeaderComponent extends Component {
             <header>
                 <nav className ="navbar navbar-expand-md bg-dark navbar-dark ">
                     
-                  <a className = "navbar-brand"href="">keke</a>
+        <a className = "navbar-brand"href="">{this.props.match.params.userName}</a>
                    
                     <ul className = "navbar-nav">
                       { userLogin&&<li className="nav-link"><Link to="/welcome/keke"className="nav-link">Home</Link></li>}
